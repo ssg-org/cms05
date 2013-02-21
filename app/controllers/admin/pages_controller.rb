@@ -1,6 +1,6 @@
 class Admin::PagesController < AdminController
 	def index
-		@pages = Page.all
+		@pages = Page.includes(:user).all
 	end
 
 	def new
@@ -9,32 +9,23 @@ class Admin::PagesController < AdminController
 	end
 
 	def create
-		page = Page.new
-		page.title = params[:page][:title]
-		page.content = params[:page][:content]
-		page.parent = Page.find(params[:page][:parent_id]) if !params[:page][:parent_id].blank?
-		page.save!
+		@user.create_page(params[:page][:title], params[:page][:content], params[:page][:parent_id])
 		redirect_to admin_pages_path()
 	end
 
 	def edit
-		@page = Page.find(params[:id])
+		@page = @user.page(params[:id])
 		@pages = Page.all
 	end
 
 	def update
-		page = Page.find(params[:id])
-		page.title = params[:page][:title]
-		page.content = params[:page][:content]
-		page.parent = Page.find(params[:page][:parent_id]) if !params[:page][:parent_id].blank?
-		page.save!
-
+		@user.update_page(params[:id], params[:page][:title], params[:page][:content], params[:page][:parent_id])
 		redirect_to admin_pages_path()
 	end
 
+
 	def destroy
-		page = Page.find(params[:id])
-		page.destroy
+		@user.destroy_page(params[:id])
 		redirect_to admin_pages_path()
 	end
 end

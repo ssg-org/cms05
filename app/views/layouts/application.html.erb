@@ -16,12 +16,7 @@
 
   <div id="wrapper">
     <div id="content">
-
-      <% if notice || alert %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <% end %>
-
+      <%= render :partial => 'render_info' %>
       <%= yield %>
     </div>
   </div>

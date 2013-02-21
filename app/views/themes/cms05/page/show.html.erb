@@ -1,3 +1,7 @@
 <h2><%=@page.title%></h2>
 <hr/>
 <%= @page.content.html_safe %>
+<br/>
+<div>
+	<span style="color:#333333; font-size:10px; float:right;"><%=@page.user.display_name%> <%=time_ago_in_words @page.created_at%> ago</span>
+</div>

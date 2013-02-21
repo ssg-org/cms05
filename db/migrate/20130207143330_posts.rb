@@ -1,7 +1,7 @@
 class Posts < ActiveRecord::Migration
   def up
   	create_table :posts do |t|
-  		# t.references	:user, :null => false
+  		t.references	:user, :null => false
   		t.string			:title,      :null => false
   		t.text				:content,     :null => false
 

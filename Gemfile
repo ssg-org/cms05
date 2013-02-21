@@ -15,7 +15,7 @@ gem 'font-awesome-sass-rails'
 gem 'breadcrumbs_on_rails'
 
 gem 'ancestry'
-gem 'devise'
+# gem 'devise'
 
 gem "paperclip", "~> 3.0"
 

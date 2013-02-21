@@ -1,6 +1,6 @@
 class Admin::PostsController < AdminController
 	def index
-		@posts = Post.all
+		@posts = Post.includes(:user).all
 	end
 
 	def new
@@ -8,30 +8,21 @@ class Admin::PostsController < AdminController
 	end
 
 	def create
-		@post = Post.new
-		@post.title = params[:post][:title]
-		@post.content = params[:post][:content]
-		@post.save
-
+		@user.create_post(params[:post][:title], params[:post][:content])
 		redirect_to admin_posts_path()
 	end
 
 	def edit
-		@post = Post.find(params[:id])
+		@post = @user.post(params[:id])
 	end
 
 	def update
-		post = Post.find(params[:id])
-		post.title = params[:post][:title]
-		post.content = params[:post][:content]
-		post.save!
-
+		@user.update_post(params[:id], params[:post][:title], params[:post][:content])
 		redirect_to admin_posts_path()
 	end
 
 	def destroy
-		post = Post.find(params[:id])
-		post.destroy
+		@user.destroy_post(params[:id])
 		redirect_to admin_posts_path()		
 	end
 

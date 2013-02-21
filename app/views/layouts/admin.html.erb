@@ -19,6 +19,9 @@
       <div class="container">
         <a class="brand" href="/">[Back to site preview]</a>
         <div class="nav-collapse collapse">
+          <p class="navbar-text pull-right">
+            <a href="#" class="navbar-link"><%=@user.display_name%></a>
+          </p>
           <ul class="nav">
             <li class="active"><a href="#">Admin</a></li>
             <li class=""><a href="#">Settings</a></li>
@@ -28,17 +31,6 @@
     </div>
   </div>
 
-  <% if notice%>
-    <div class="alert alert-success">
-      <strong>Success!!</strong> <%=notice%>
-    </div>
-  <% end %>
-  <% if alert%>
-    <div class="alert alert-error">
-      <strong>Success!!</strong> <%=alert%>
-    </div>
-  <% end %>
-
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span1">
@@ -47,17 +39,20 @@
           <li class="<%= 'active' if params[:controller] == 'admin/posts'%>"><%=link_to 'Posts', admin_posts_path()%></li>
           <li class="<%= 'active' if params[:controller] == 'admin/pages'%>"><%=link_to 'Pages', admin_pages_path()%></li>
           <li class="<%= 'active' if params[:controller] == 'admin/media'%>"><%=link_to 'Media', admin_media_path()%></li>
-          <li class="<%= 'active' if params[:controller] == 'admin/links'%>"><%=link_to 'Links', admin_links_path()%></li>
+
+          <li class="nav-header">Users</li>
+          <li class="<%= 'active' if params[:controller] == 'admin/users'%>"><%=link_to 'Users', admin_users_path()%></li>
 
           <li class="nav-header">Appearance</li>
           <li class="<%= 'active' if params[:controller] == 'admin/themes'%>"><%=link_to 'Themes', admin_themes_path()%></li>
         </ul>
       </div>
-      <div class="span11">
-        <div id="content">
-        <h2 style="border-bottom:5px solid #eeeeee; padding:10px;"><%=params[:controller].split('/')[1].capitalize.singularize%></h2>
-        <br/>
-        <%= yield %>
+
+      <div class="row-fluid">
+        <div class="span11 white-panel" >
+          <div class="row-fluid">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>

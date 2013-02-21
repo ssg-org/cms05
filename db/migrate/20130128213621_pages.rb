@@ -1,7 +1,7 @@
 class Pages < ActiveRecord::Migration
   def up
   	create_table	:pages do |t|
-      t.references  :user
+      t.references  :user, :null => false
 
   		t.text	:title,		:null => false
   		t.text	:content, :null => false

@@ -1,6 +1,4 @@
 Cms05::Application.routes.draw do
-  devise_for :users
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -49,10 +47,10 @@ Cms05::Application.routes.draw do
   #   end
 
   namespace :admin do
-    resources :pages
+    resources :sessions, :only => [:new, :create, :destroy]
     resources :users
+    resources :pages
     resources :media
-    resources :links
     resources :themes, :only => [:index] do
       collection do
         post :set

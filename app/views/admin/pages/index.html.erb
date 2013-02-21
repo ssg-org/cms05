@@ -1,21 +1,26 @@
-<%=link_to "New Page", new_admin_page_path(), :class => 'btn' %>
-<br/><br/>
-<table class="table table-condensed ">
-  <tr>
-  	<td>Id</td>
-  	<td>Title</td>
-  	<td>Ancestry</td>
-  	<td>Actions</td>
-  </tr>	
-  <% @pages.each do |page| %>
-  	<tr>
-  		<td><%= page.id %></td>
-  		<td><b><%= page.title %></b></td>
-  		<td><%= page.ancestry %></td>
-  		<td>
-  			<%= link_to 'Edit', edit_admin_page_url(page.id)%> | 
-  			<%= link_to 'Delete', admin_page_path(page.id), :method => :delete, :class => :destroy %>
-  		</td>
-  	</tr>
-  <% end %>
-</table>
+<div class="span12">
+  <%=link_to "New Page", new_admin_page_path(), :class => 'btn' %>
+  <br/><br/>
+  <table class="table table-condensed ">
+    <tr>
+    	<td>Id</td>
+    	<td>Title</td>
+    	<td>Ancestry</td>
+      <td>Author</td>
+    	<td>Actions</td>
+    </tr>	
+    <% @pages.each do |page| %>
+    	<tr>
+    		<td><%= page.id %></td>
+        <td><b><%= page.title %></b></td>
+    		<td><%= page.ancestry %></td>
+        <td><%= page.user.display_name %></td>
+    		<td>
+    			<%= link_to 'Edit', edit_admin_page_url(page.slug)%> | 
+    			<%= link_to 'Delete', admin_page_path(page.slug), :method => :delete, :class => :destroy %> | 
+          <%= link_to 'Preview', "/#{page.slug}"%>
+    		</td>
+    	</tr>
+    <% end %>
+  </table>
+</div>
