@@ -1,0 +1,17 @@
+<%= form_for [:admin, @post] do |f|%>
+	<%= f.label :title %>
+	<%= f.text_field :title  %><br/>
+	<%= f.label :content %>
+	<%= f.text_area :content, :style=>'width:600px' %><br/>
+	<%= submit_tag 'Publish', :class => 'btn' %>
+<% end %>
+
+<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
+
+<% content_for :js do %>
+<script>
+$(document).ready(function() {
+	new nicEditor({fullPanel : true}).panelInstance('post_content',{hasPanel : true});
+});
+</script>
+<% end %>

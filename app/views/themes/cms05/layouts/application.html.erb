@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	  <title>CMS 05</title>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+  	<%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <%= render :partial => 'themes/cms05/header' %>
+
+  <%= render :partial => 'themes/cms05/breadcrumbs'%>
+
+  <div id="wrapper">
+    <div id="content">
+
+      <% if notice || alert %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </div>
+
+  <%= render :partial => 'themes/cms05/footer' %>
+ 
+  <%= javascript_include_tag "application" %>
+  <%= yield :js %>
+</body>
+</html>

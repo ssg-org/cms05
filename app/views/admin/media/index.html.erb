@@ -1,0 +1,16 @@
+<%=link_to "Upload new media", new_admin_medium_path(), :class => 'btn' %>
+<br/><br/>
+<table class="table table-condensed ">
+  <tr>
+  	<td>Title</td>
+  	<td>URL</td>
+    <td>Size</td>
+  </tr>	
+  <% @media.each do |m| %>
+  	<tr>
+  		<td><%= m.title %></td>
+  		<td><%= m.attachment %></td>
+      <td><%= m.attachment_file_size %></td>
+  	</tr>
+  <% end %>
+</table>

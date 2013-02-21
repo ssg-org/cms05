@@ -1,0 +1,110 @@
+<div id="header">
+	<ul class="simple-menu " id="jsddm">
+    <li >
+    	<%=link_to 'Home', '/' , :class => "#{'simple-menu-active' if params[:action] == 'index'}"%>
+   	</li>
+	  <% @pager.root_pages.each do |page|%>
+	    <li>
+	    	<%=link_to page.title, "/#{page.slug}", :class => "#{'simple-menu-active' if params[:permalink] == page.slug}" %>
+		  	<% if page.has_children? %>
+					<ul>
+						<% page.children.each do |sub_page|%>
+			    		<li><%=link_to sub_page.title, "/#{sub_page.slug}" %></li>
+						<% end %>
+					</ul>
+		  		
+		  	<% end %>
+	   	</li>
+	  <% end %>
+	</ul>
+</div>
+
+<style type="text/css">
+
+.simple-menu {
+	margin: 0 50px 0 0;
+	padding: 0;
+	float:right;
+}
+
+.simple-menu li {	
+	float: left;
+	list-style: none;
+}
+
+.simple-menu li a {	
+	display: block;
+	padding: 10px 20px;
+	text-decoration: none;
+	margin-right:15px;
+	white-space: nowrap;
+}
+
+.simple-menu li a:hover {	
+	background: rgb(138, 155, 15);
+}
+		
+.simple-menu-active {	
+	background: rgb(138, 155, 15);
+}
+		
+.simple-menu li ul {	
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	visibility: hidden;
+}
+		
+.simple-menu li ul li {	
+	float: none;
+	display: inline;
+}
+
+.simple-menu li ul li a {	
+	width: auto;
+	background: #A9C251;
+	color: #24313C;
+}
+
+.simple-menu li ul li a:hover {	
+	background: #8EA344;
+}
+</style>
+
+
+<%= content_for :js do %>
+<script>
+var timeout    	= 500;
+var closetimer 	= 0;
+var ddmenuitem  = 0;
+
+function simple_menu_open() {	
+	simple_menu_canceltimer();
+	simple_menu_close();
+	ddmenuitem = $(this).find('ul').eq(0).css('visibility', 'visible');
+}
+
+function simple_menu_close() {	
+	if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');
+}
+
+function simple_menu_timer() {	
+	closetimer = window.setTimeout(simple_menu_close, timeout);
+}
+
+function simple_menu_canceltimer() {	
+	if(closetimer) {	
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+$(document).ready(function() {	
+	$('.simple-menu > li').bind('mouseover', simple_menu_open);
+	$('.simple-menu > li').bind('mouseout',  simple_menu_timer);
+});
+
+document.onclick = simple_menu_close;
+
+</script>
+<% end %>

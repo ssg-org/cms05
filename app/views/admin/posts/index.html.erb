@@ -1,0 +1,19 @@
+<%=link_to "New Post", new_admin_post_path(), :class => 'btn' %>
+<br/><br/>
+<table class="table table-condensed ">
+  <tr>
+  	<td>Id</td>
+  	<td>Title</td>
+  	<td>Actions</td>
+  </tr>	
+  <% @posts.each do |post| %>
+  	<tr>
+  		<td><%= post.id %></td>
+  		<td><b><%= post.title %></b></td>
+  		<td>
+  			<%= link_to 'Edit', edit_admin_post_url(post.id)%> | 
+  			<%= link_to 'Delete', admin_post_path(post.id), :method => :delete, :class => :destroy %>
+  		</td>
+  	</tr>
+  <% end %>
+</table>

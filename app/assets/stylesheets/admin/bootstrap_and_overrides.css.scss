@@ -1,0 +1,88 @@
+$sansFontFamily : 'Titillium Web';
+$serifFontFamily : 'Titillium Web';
+
+$gridGutterWidth:10px;
+$gridGutterWidth1200:10px;
+$gridGutterWidth768:10px;
+
+$navbarBackground : #788c00;
+$navbarBackgroundHighlight : #788c00;
+$navbarText : #ffffff;
+$navbarBrandColor : #ffffff;
+$navbarLinkColor : #ffffff;
+$navbarLinkColorActive : #ffffff;
+
+
+@import "bootstrap";
+
+body {
+	padding-top:60px;
+	background-color: #2d2d2d;
+	background-image: -webkit-gradient(radial,center center,0,center center,460,from(#666),to(#2d2d2d));
+	background-image: -webkit-radial-gradient(circle,#666,#2d2d2d);
+	background-image: -moz-radial-gradient(circle,#666,#2d2d2d);
+	background-image: -ms-radial-gradient(circle,#666,#2d2d2d);
+	background-image: -o-radial-gradient(circle,#666,#2d2d2d);
+	background-repeat: no-repeat;
+	background-color: #2d2d2d;
+	background-image: -webkit-gradient(radial,center center,0,center center,460,from(#666),to(#2d2d2d));
+	background-image: -webkit-radial-gradient(circle,#666,#2d2d2d);
+	background-image: -moz-radial-gradient(circle,#666,#2d2d2d);
+	background-image: -ms-radial-gradient(circle,#666,#2d2d2d);
+	background-image: -o-radial-gradient(circle,#666,#2d2d2d);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+
+.nav-list {
+	a {
+		color: white;
+	}
+	.active  {
+		a {
+			background-color:gray;
+		}
+	}
+}
+
+
+
+#sidebar-left {
+  background-color:transparent;
+}
+
+#menu {
+	list-style:none;
+	display:block;
+	float:left;
+	width:10%;
+
+	li {
+		display:inline-block;
+		height:50px;
+		border:2px solid black;
+	}	
+}
+
+#content {
+  background-color: #ffffff;
+  border: 2px solid #eee;
+  border-radius:5px;
+  padding:10px;
+}
+
+
+ul.nav li.dropdown:hover ul.dropdown-menu{
+    display: block;    
+    margin: 0;
+}
+
+a.menu:after, .dropdown-toggle:after {
+  content: none;
+}
+
+
+@import "bootstrap-responsive";
+
+

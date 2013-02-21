@@ -1,0 +1,7 @@
+<h2><%= link_to @post.title, post_path(@post)%></h2>
+<div class="content">
+	<%= @post.content.html_safe%>
+</div>
+<div>
+	<span style="color:#333333; font-size:10px; float:right;">Posted at <%=distance_of_time_in_words_to_now @post.created_at%></span>
+</div>

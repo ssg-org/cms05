@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	  <title>Admin - CMS 05</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+	  <%= stylesheet_link_tag    "admin", :media => "all" %>
+  	<%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+  <div class="navbar  navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="/">[Back to site preview]</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a href="#">Admin</a></li>
+            <li class=""><a href="#">Settings</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+
+  <% if notice%>
+    <div class="alert alert-success">
+      <strong>Success!!</strong> <%=notice%>
+    </div>
+  <% end %>
+  <% if alert%>
+    <div class="alert alert-error">
+      <strong>Success!!</strong> <%=alert%>
+    </div>
+  <% end %>
+
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span1">
+        <ul class="nav nav-list">
+          <li class="nav-header">Content</li>
+          <li class="<%= 'active' if params[:controller] == 'admin/posts'%>"><%=link_to 'Posts', admin_posts_path()%></li>
+          <li class="<%= 'active' if params[:controller] == 'admin/pages'%>"><%=link_to 'Pages', admin_pages_path()%></li>
+          <li class="<%= 'active' if params[:controller] == 'admin/media'%>"><%=link_to 'Media', admin_media_path()%></li>
+          <li class="<%= 'active' if params[:controller] == 'admin/links'%>"><%=link_to 'Links', admin_links_path()%></li>
+
+          <li class="nav-header">Appearance</li>
+          <li class="<%= 'active' if params[:controller] == 'admin/themes'%>"><%=link_to 'Themes', admin_themes_path()%></li>
+        </ul>
+      </div>
+      <div class="span11">
+        <div id="content">
+        <h2 style="border-bottom:5px solid #eeeeee; padding:10px;"><%=params[:controller].split('/')[1].capitalize.singularize%></h2>
+        <br/>
+        <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= javascript_include_tag "admin" %>
+	<%= yield :js %>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Current theme : <b id="curr_theme"><%= ApplicationController.theme%></b>
+<br/><br/>
+<ul>
+	<% @themes.each do |theme| %>
+		<li><%=link_to theme, set_admin_themes_path(:theme => theme), :remote => true, :method => :post%></li>
+	<% end %>
+</ul>

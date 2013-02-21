@@ -1,0 +1,19 @@
+== Setup
+
+- bundle install
+- rake db:migrate
+- rake db:seed
+- rails s
+
+
+== Content
+http://localhost:3000
+
+== Admin
+http://localhost:3000/admin/pages
+
+== Theme change
+application_controller.rb
+
+THEME = "sample"
+THEME = "cms05"
