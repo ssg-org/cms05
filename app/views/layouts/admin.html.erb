@@ -43,16 +43,14 @@
           <li class="nav-header">Users</li>
           <li class="<%= 'active' if params[:controller] == 'admin/users'%>"><%=link_to 'Users', admin_users_path()%></li>
 
-          <li class="nav-header">Appearance</li>
+          <li class="nav-header">Look</li>
           <li class="<%= 'active' if params[:controller] == 'admin/themes'%>"><%=link_to 'Themes', admin_themes_path()%></li>
         </ul>
       </div>
 
-      <div class="row-fluid">
-        <div class="span11 white-panel" >
-          <div class="row-fluid">
-            <%= yield %>
-          </div>
+      <div class="span11 white-panel" >
+        <div class="row-fluid">
+          <%= yield %>
         </div>
       </div>
     </div>

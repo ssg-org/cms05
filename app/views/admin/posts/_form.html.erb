@@ -1,10 +1,57 @@
-<%= form_for [:admin, @post] do |f|%>
-	<%= f.label :title %>
-	<%= f.text_field :title  %><br/>
-	<%= f.label :content %>
-	<%= f.text_area :content, :style=>'width:600px' %><br/>
-	<%= submit_tag 'Publish', :class => 'btn' %>
-<% end %>
+<div class="span8">
+	<div class="widget">
+		<div class="widget-content">
+			<%= form_for [:admin, @post] do |f|%>
+				<%= f.label :title %>
+				<%= f.text_field :title  %><br/>
+				<%= f.label :content %>
+				<%= f.text_area :content, :style=>'width:600px' %><br/>
+				<%= submit_tag 'Publish', :class => 'btn' %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+<div class="span4">
+	<div class="widget">
+		<div class="widget-title">
+			Publishing
+		</div>
+		<div class="widget-content">
+			<ul>
+				<li>Save draft</li>
+				<li>Publish</li>
+				<li>Delete</li>
+			</ul>
+		</div>
+	</div>
+	<div class="widget">
+		<div class="widget-title">
+			Categories
+		</div>
+		<div class="widget-content">
+			<ul>
+				<li>Category 1</li>
+				<li>Category 2</li>
+				<li>Category 3</li>
+			</ul>
+		</div>
+	</div>
+	<div class="widget">
+		<div class="widget-title">
+			Tags
+		</div>
+		<div class="widget-content">
+			<ul>
+				<li>Tag 1</li>
+				<li>Tag 2</li>
+				<li>Tag 3</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
 
 <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
 

@@ -1,18 +1,50 @@
-<%= form_for [:admin, @page] do |f|%>
-	<%= f.label :title %>
-	<%= f.text_field :title  %><br/>
+<div class="span8">
+	<div class="widget">
+		<div class="widget-content">
+			<%= form_for [:admin, @page] do |f|%>
+				<%= f.label :title %>
+				<%= f.text_field :title  %><br/>
 
-	<%= f.label :parent_page %>
-	<%= f.collection_select :parent_id, @pages, :id, :title , :include_blank => true, :selected => @page.parent ? @page.parent.id : nil %>
+				<%= f.label :parent_page %>
+				<%= f.collection_select :parent_id, @pages, :id, :title , :include_blank => true, :selected => @page.parent ? @page.parent.id : nil %>
 
-	<%= f.label :content %>
-	<%= f.text_area :content, :style=>'width:600px' %><br/>
+				<%= f.label :content %>
+				<%= f.text_area :content, :style=>'width:600px' %><br/>
 
-	<%= submit_tag 'Publish', :class => 'btn' %>
-<% end %>
+				<%= submit_tag 'Publish', :class => 'btn' %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="span4">
+	<div class="widget">
+		<div class="widget-title">
+			Publishing
+		</div>
+		<div class="widget-content">
+			<ul>
+				<li>Save draft</li>
+				<li>Publish</li>
+				<li>Delete</li>
+			</ul>
+		</div>
+	</div>
+	<div class="widget">
+		<div class="widget-title">
+			Attributes
+		</div>
+		<div class="widget-content">
+			<ul>
+				<li>Parent page</li>
+				<li>Order</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
 
 <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
-
 <% content_for :js do %>
 <script>
 $(document).ready(function() {
