@@ -63,4 +63,19 @@ class User < ActiveRecord::Base
 	end
 
 
+
+	###########################################
+	#
+	# Media (move to another module)
+	#
+	def create_media(attachment)
+ 		medium = Medium.new()
+ 		medium.attachment = attachment
+ 		medium.user = self
+ 		medium.title = attachment.original_filename
+ 		medium.save!
+	end
+
+
+
 end

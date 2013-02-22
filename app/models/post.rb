@@ -2,6 +2,7 @@ class Post < ActiveRecord::Base
 	extend FriendlyId
 
 	belongs_to	:user
+	belongs_to	:state
 
 	friendly_id :title, :use => :slugged
 

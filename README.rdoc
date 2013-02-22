@@ -12,6 +12,11 @@ http://localhost:3000
 == Admin
 http://localhost:3000/admin/pages
 
+Default admin account:
+
+email: cms@cms.com 
+password: cms
+
 == Theme change
 application_controller.rb
 

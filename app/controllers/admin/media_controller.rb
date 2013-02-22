@@ -7,12 +7,9 @@ class Admin::MediaController < AdminController
 		@medium = Medium.new
 	end
 
-	def create
- 		@medium = Medium.new()
- 		@medium.attachment = params[:medium][:attachment]
- 		@medium.title = params[:medium][:attachment].original_filename
- 		@medium.save!
 
+	def create
+		@user.create_media(params[:medium][:attachment])
  		redirect_to admin_media_path()
 	end
 end

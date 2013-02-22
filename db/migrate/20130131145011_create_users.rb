@@ -10,14 +10,9 @@ class CreateUsers < ActiveRecord::Migration
       
       t.integer :role,              :null => false
 
-      ## Trackable
-      t.datetime :current_sign_in_at
-      t.string   :current_sign_in_ip
-
-
       t.timestamps
     end
 
-    add_index :users, :email,                :unique => true
+    add_index :users, :email, :unique => true
   end
 end
