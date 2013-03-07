@@ -1,64 +1,51 @@
-<div class="span8">
-	<div class="widget">
-		<div class="widget-content">
-			<%= form_for [:admin, @post] do |f|%>
-				<%= f.label :title %>
-				<%= f.text_field :title  %><br/>
-				<%= f.label :content %>
-				<%= f.text_area :content, :style=>'width:600px' %><br/>
-				<%= submit_tag 'Publish', :class => 'btn' %>
-			<% end %>
+<%= form_for [:admin, @post], :html => {:id => 'post_form'} do |f|%>
+	<div class="row-fluid">
+		<div class="span8">
+			<div class="widget">
+				<div class="widget-content">
+						<%= f.label :title %>
+						<%= f.text_field :title, :class => 'required'  %><br/>
+
+						<%= f.label :content %>
+						<%= f.text_area :content, :style=>'width:600px', :class => 'ckeditor' %><br/>
+
+						<%= f.label :meta %>
+						<%= f.text_area :meta, :style=>'width:600px; height:100px;' %><br/>
+				</div>
+			</div>
+		</div>
+
+		<div class="span4">
+			<div class="widget">
+				<div class="widget-title">
+					Publishing
+				</div>
+				<div class="widget-content">
+					Published at <%=@post.created_at || '???'%>
+					<hr/>
+					<%= submit_tag 'Publish', :class => 'btn btn-primary' %>
+				</div>
+			</div>
+			<div class="widget">
+				<div class="widget-title">
+					Categories
+				</div>
+				<div class="widget-content">
+					<%= f.label :categories %>
+					<% Category.all.each do |category|%>
+						<%= check_box_tag :category_ids, category.id, @post.categories.include?(category), :name => 'post[category_ids][]' %>
+						<%= category.name%><br/>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-
-
-<div class="span4">
-	<div class="widget">
-		<div class="widget-title">
-			Publishing
-		</div>
-		<div class="widget-content">
-			<ul>
-				<li>Save draft</li>
-				<li>Publish</li>
-				<li>Delete</li>
-			</ul>
-		</div>
-	</div>
-	<div class="widget">
-		<div class="widget-title">
-			Categories
-		</div>
-		<div class="widget-content">
-			<ul>
-				<li>Category 1</li>
-				<li>Category 2</li>
-				<li>Category 3</li>
-			</ul>
-		</div>
-	</div>
-	<div class="widget">
-		<div class="widget-title">
-			Tags
-		</div>
-		<div class="widget-content">
-			<ul>
-				<li>Tag 1</li>
-				<li>Tag 2</li>
-				<li>Tag 3</li>
-			</ul>
-		</div>
-	</div>
-</div>
-
-
-<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> 
+<% end %>
 
 <% content_for :js do %>
 <script>
-$(document).ready(function() {
-	new nicEditor({fullPanel : true}).panelInstance('post_content',{hasPanel : true});
-});
+	$(document).ready(function(){
+	  $("#post_form").validate();
+	});
 </script>
 <% end %>

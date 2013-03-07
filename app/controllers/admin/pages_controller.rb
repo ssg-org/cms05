@@ -9,7 +9,7 @@ class Admin::PagesController < AdminController
 	end
 
 	def create
-		@user.create_page(params[:page][:title], params[:page][:content], params[:page][:parent_id])
+		@user.create_page(page_params)
 		redirect_to admin_pages_path()
 	end
 
@@ -19,7 +19,7 @@ class Admin::PagesController < AdminController
 	end
 
 	def update
-		@user.update_page(params[:id], params[:page][:title], params[:page][:content], params[:page][:parent_id])
+		@user.update_page(params[:id], page_params)
 		redirect_to admin_pages_path()
 	end
 
@@ -27,5 +27,11 @@ class Admin::PagesController < AdminController
 	def destroy
 		@user.destroy_page(params[:id])
 		redirect_to admin_pages_path()
+	end
+
+private
+	
+	def page_params
+    params.require(:page).permit(:title, :content, :parent_id, :template)
 	end
 end

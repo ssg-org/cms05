@@ -1,3 +1,5 @@
+require 'themes/context'
+
 class Page < ActiveRecord::Base
 	extend FriendlyId
 
@@ -5,13 +7,11 @@ class Page < ActiveRecord::Base
 	belongs_to	:state
 
 	friendly_id :title, :use => :slugged
-
 	has_ancestry
 
-	def set_data(user, title, content, parent_id)
-		self.user = user
-		self.title = title
-		self.content = content
-		self.parent = Page.find(parent_id) if !parent_id.blank?
+	def template_path()
+		theme = Themes::Context.get_theme()
+		return self.template.blank? ? "themes/#{theme}/page/show" : "themes/#{theme}/#{self.template}"
 	end
+
 end

@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     	end
 
 
-			render :template => "themes/#{theme}/page/show"
+			render :template => @page.template_path()
 		end
 	end
 

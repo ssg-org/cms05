@@ -1,6 +1,6 @@
 class Admin::PostsController < AdminController
 	def index
-		@posts = Post.includes(:user).all
+		@posts = Post.includes([:user, :categories]).all
 	end
 
 	def new
@@ -8,7 +8,7 @@ class Admin::PostsController < AdminController
 	end
 
 	def create
-		@user.create_post(params[:post][:title], params[:post][:content])
+		@user.create_post(post_params)
 		redirect_to admin_posts_path()
 	end
 
@@ -17,7 +17,7 @@ class Admin::PostsController < AdminController
 	end
 
 	def update
-		@user.update_post(params[:id], params[:post][:title], params[:post][:content])
+		@user.update_post(params[:id], post_params)
 		redirect_to admin_posts_path()
 	end
 
@@ -26,4 +26,8 @@ class Admin::PostsController < AdminController
 		redirect_to admin_posts_path()		
 	end
 
+private
+	def post_params
+    params.require(:post).permit(:title, :content, :category_ids, :meta)
+  end
 end

@@ -1,24 +1,28 @@
-<div class="span12">
-  <%=link_to "New Post", new_admin_post_path(), :class => 'btn' %>
-  <br/><br/>
-  <table class="table table-condensed ">
-    <tr>
-    	<td>Id</td>
-      <td>Title</td>
-      <td>Author</td>
-    	<td>Actions</td>
-    </tr>	
-    <% @posts.each do |post| %>
-    	<tr>
-    		<td><%= post.id %></td>
-        <td><b><%= post.title %></b></td>
-        <td><%= post.user.display_name %></td>
-    		<td>
-    			<%= link_to 'Edit', edit_admin_post_url(post.slug)%> | 
-    			<%= link_to 'Delete', admin_post_path(post.slug), :method => :delete, :class => :destroy %> | 
-          <%= link_to 'Preview', "/posts/#{post.slug}"%>
-    		</td>
-    	</tr>
-    <% end %>
-  </table>
+<div class="row-fluid">
+  <div class="span12">
+    <%=link_to "New Post", new_admin_post_path(), :class => 'btn' %>
+    <br/><br/>
+    <table class="table table-condensed ">
+      <tr>
+      	<td>Id</td>
+        <td>Title</td>
+        <td>Author</td>
+        <td>Categories</td>
+      	<td>Actions</td>
+      </tr>	
+      <% @posts.each do |post| %>
+      	<tr>
+      		<td><%= post.id %></td>
+          <td><b><%= post.title %></b></td>
+          <td><%= post.user.display_name %></td>
+          <td><%= post.categories.map(&:name).join(', ') %></td>
+      		<td>
+      			<%= link_to 'Edit', edit_admin_post_url(post.slug)%> | 
+      			<%= link_to 'Delete', admin_post_path(post.slug), :method => :delete, :class => :destroy %> | 
+            <%= link_to 'Preview', "/posts/#{post.slug}"%>
+      		</td>
+      	</tr>
+      <% end %>
+    </table>
+  </div>
 </div>

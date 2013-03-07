@@ -18,15 +18,15 @@ class User < ActiveRecord::Base
 		return self.pages.where(:slug => slug_id).first
 	end
 
-	def create_page(title, content, parent_id)
-		page = Page.new
-		page.set_data(self, title, content, parent_id)
+	def create_page(params)
+		page = Page.new(params)
+		page.user = self
 		page.save!
 	end
 
-	def update_page(slug_id, title, content, parent_id)
+	def update_page(slug_id, params)
 		page = page(slug_id)
-		page.set_data(self, title, content, parent_id)
+		page.update_attributes!(params)
 		page.save!
 	end
 
@@ -45,16 +45,15 @@ class User < ActiveRecord::Base
 		return self.posts.where(:slug => slug_id).first
 	end
 
-	def create_post(title, content)
-		post = Post.new
-		post.set_data(self, title, content)
+	def create_post(post_params)
+		post = Post.new(post_params)
+		post.user = self
 		post.save!
 	end
 
-	def update_post(slug_id, title, content)
+	def update_post(slug_id, post_params)
 		post = post(slug_id)
-		post.set_data(self, title, content)
-		post.save!
+		post.update_attributes!(post_params)
 	end
 
 	def destroy_post(slug_id)

@@ -1,4 +1,5 @@
 require 'cms/pager'
+require 'themes/context'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
@@ -19,11 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def self.theme
-    @@theme ||= 'cms05'
-    return @@theme
+    return Themes::Context.get_theme()
   end
 
   def self.theme=(value)
-    @@theme = value
+    Themes::Context.set_theme(value)
   end
 end

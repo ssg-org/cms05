@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 
@@ -15,9 +15,13 @@ gem 'font-awesome-sass-rails'
 gem 'breadcrumbs_on_rails'
 
 gem 'ancestry'
-# gem 'devise'
 
 gem "paperclip", "~> 3.0"
+
+gem 'strong_parameters'
+
+gem 'execjs'
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.

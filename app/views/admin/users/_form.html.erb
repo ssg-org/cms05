@@ -1,0 +1,43 @@
+<%= form_for [:admin, @user], :html => {:id => 'user_form'} do |f|%>
+	<div class="row-fluid">
+		<div class="span8">
+			<div class="widget">
+				<div class="widget-content">
+						<%= f.label :email %>
+						<%= f.text_field :email, :class => 'required email'  %><br/>
+
+						<%= f.label :password %>
+						<%= f.password_field :password, :class => 'required' %><br/>
+
+						<%= f.label :password2 %>
+						<%= f.password_field :password2, :class => 'required' %><br/>
+
+						<%= f.label :firstname %>
+						<%= f.text_field :firstname, :class => 'required' %><br/>
+
+						<%= f.label :lastname %>
+						<%= f.text_field :lastname, :class => 'required' %><br/>
+				</div>
+			</div>
+		</div>
+
+		<div class="span4">
+			<div class="widget">
+				<div class="widget-title">
+					Create
+				</div>
+				<div class="widget-content">
+					<%= submit_tag 'Create', :class => 'btn btn-primary' %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<% content_for :js do %>
+<script>
+	$(document).ready(function(){
+	  $("#user_form").validate();
+	});
+</script>
+<% end %>

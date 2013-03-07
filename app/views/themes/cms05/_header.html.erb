@@ -1,8 +1,5 @@
 <div id="header">
 	<ul class="simple-menu " id="jsddm">
-    <li >
-    	<%=link_to 'Home', '/' , :class => "#{'simple-menu-active' if params[:action] == 'index'}"%>
-   	</li>
 	  <% @pager.root_pages.each do |page|%>
 	    <li>
 	    	<%=link_to page.title, "/#{page.slug}", :class => "#{'simple-menu-active' if params[:permalink] == page.slug}" %>
@@ -18,58 +15,6 @@
 	  <% end %>
 	</ul>
 </div>
-
-<style type="text/css">
-
-.simple-menu {
-	margin: 0 50px 0 0;
-	padding: 0;
-	float:right;
-}
-
-.simple-menu li {	
-	float: left;
-	list-style: none;
-}
-
-.simple-menu li a {	
-	display: block;
-	padding: 10px 20px;
-	text-decoration: none;
-	margin-right:15px;
-	white-space: nowrap;
-}
-
-.simple-menu li a:hover {	
-	background: rgb(138, 155, 15);
-}
-		
-.simple-menu-active {	
-	background: rgb(138, 155, 15);
-}
-		
-.simple-menu li ul {	
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	visibility: hidden;
-}
-		
-.simple-menu li ul li {	
-	float: none;
-	display: inline;
-}
-
-.simple-menu li ul li a {	
-	width: auto;
-	background: #A9C251;
-	color: #24313C;
-}
-
-.simple-menu li ul li a:hover {	
-	background: #8EA344;
-}
-</style>
 
 
 <%= content_for :js do %>

@@ -3,6 +3,10 @@ class Admin::UsersController < AdminController
 		@users = User.all
 	end
 
+	def new
+		@user = User.new
+	end
+
 	def new_login
 		@user = User.new
 	end

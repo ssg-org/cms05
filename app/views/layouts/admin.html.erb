@@ -49,13 +49,14 @@
       </div>
 
       <div class="span11 white-panel" >
-        <div class="row-fluid">
-          <%= yield %>
-        </div>
+        <%= yield %>
       </div>
     </div>
   </div>
 
+  <script>
+  var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+  </script>
   <%= javascript_include_tag "admin" %>
 	<%= yield :js %>
 </body>
